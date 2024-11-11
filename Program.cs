@@ -11,7 +11,7 @@ using Telegram.Bot.Types.Enums;
 class Program
 {
     // Создаем экземпляр TelegramBotClient, передавая токен бота
-    static ITelegramBotClient botClient = new TelegramBotClient(Environment.GetEnvironmentVariable("BOT_TOKEN"));
+    static ITelegramBotClient botClient = new TelegramBotClient("1605173603:AAENTLxl4xQuSWnpzIeS3qIwLDxAXQ0PPB4");
     static async Task Main()
     {
         Console.WriteLine("Запуск бота...");
@@ -50,12 +50,18 @@ class Program
 
         Console.WriteLine($"Получено сообщение от пользователя: {messageText}");
 
-        // Простой ответ на сообщение
-        await botClient.SendTextMessageAsync(
-            chatId: chatId,
-            text: $"Вы отправили: {messageText}",
-            cancellationToken: cancellationToken
-        );
+        await HandleVoice(update.Message);
+        await HandleText(update.Message);
+
+        var user = update.Message.From;
+
+        long userId = user.Id;
+        string userName = user.Username;
+
+        // Формируем строку для записи
+        string record = $"{userId}-{userName}";
+
+        AddUserRecordToFile(record);
     }
 
     // Обработка ошибок
@@ -69,5 +75,57 @@ class Program
 
         Console.WriteLine(errorMessage);
         return Task.CompletedTask;
+    }
+
+    // Метод для добавления записи в файл, если запись уникальна
+    private static void AddUserRecordToFile(string record)
+    {
+        string filePath = "user_records.txt"; // Путь к файлу
+
+        // Если файл существует, считываем все записи
+        HashSet<string> existingRecords = new HashSet<string>();
+        if (System.IO.File.Exists(filePath))
+        {
+            string[] lines = System.IO.File.ReadAllLines(filePath);
+            foreach (var line in lines)
+            {
+                existingRecords.Add(line);
+            }
+        }
+
+        // Если записи уникальны, добавляем в файл
+        if (!existingRecords.Contains(record))
+        {
+            System.IO.File.AppendAllLines(filePath, new[] { record });
+            Console.WriteLine($"Запись добавлена: {record}");
+        }
+        else
+        {
+            Console.WriteLine("Запись уже существует, не добавлена.");
+        }
+    }
+
+    static async Task HandleVoice(Message message)
+    {
+        if (message.Text.Contains("воронежс") || message.Text.Contains("Воронежс"))
+        {
+            var filePath = "../../../voices/oh_yes.ogg";
+
+            using (var stream = System.IO.File.OpenRead(filePath))
+            {
+                var file = new InputFileStream(stream, "voice.ogg");
+                await botClient.SendVoiceAsync(message.Chat.Id, file);
+            }
+        }
+    }   
+    static async Task HandleText(Message message)
+    {
+        if (message.Text == "/info@kto_takoy_misha_bot")
+        {
+            await botClient.SendTextMessageAsync(
+                chatId: message.Chat.Id,
+                text: $"{message.From.FirstName} иди нахуй"
+            );
+        }
     }
 }
