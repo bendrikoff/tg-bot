@@ -11,7 +11,7 @@ using Telegram.Bot.Types.Enums;
 class Program
 {
     // Создаем экземпляр TelegramBotClient, передавая токен бота
-    static ITelegramBotClient botClient = new TelegramBotClient("1605173603:AAENTLxl4xQuSWnpzIeS3qIwLDxAXQ0PPB4");
+    static ITelegramBotClient botClient = new TelegramBotClient(Environment.GetEnvironmentVariable("BOT_TOKEN"));
     static async Task Main()
     {
         Console.WriteLine("Запуск бота...");
