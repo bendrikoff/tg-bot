@@ -1,0 +1,26 @@
+C:\Users\admin\source\repos\Misha's bot\Misha's bot\bin\Debug\net6.0\Misha's bot.exe
+C:\Users\admin\source\repos\Misha's bot\Misha's bot\bin\Debug\net6.0\Misha's bot.deps.json
+C:\Users\admin\source\repos\Misha's bot\Misha's bot\bin\Debug\net6.0\Misha's bot.runtimeconfig.json
+C:\Users\admin\source\repos\Misha's bot\Misha's bot\bin\Debug\net6.0\Misha's bot.dll
+C:\Users\admin\source\repos\Misha's bot\Misha's bot\bin\Debug\net6.0\Misha's bot.pdb
+C:\Users\admin\source\repos\Misha's bot\Misha's bot\bin\Debug\net6.0\Microsoft.Extensions.Configuration.Abstractions.dll
+C:\Users\admin\source\repos\Misha's bot\Misha's bot\bin\Debug\net6.0\Microsoft.Extensions.Configuration.Binder.dll
+C:\Users\admin\source\repos\Misha's bot\Misha's bot\bin\Debug\net6.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\Users\admin\source\repos\Misha's bot\Misha's bot\bin\Debug\net6.0\Microsoft.Extensions.Options.dll
+C:\Users\admin\source\repos\Misha's bot\Misha's bot\bin\Debug\net6.0\Microsoft.Extensions.Options.ConfigurationExtensions.dll
+C:\Users\admin\source\repos\Misha's bot\Misha's bot\bin\Debug\net6.0\Microsoft.Extensions.Primitives.dll
+C:\Users\admin\source\repos\Misha's bot\Misha's bot\bin\Debug\net6.0\System.Text.Encodings.Web.dll
+C:\Users\admin\source\repos\Misha's bot\Misha's bot\bin\Debug\net6.0\System.Text.Json.dll
+C:\Users\admin\source\repos\Misha's bot\Misha's bot\bin\Debug\net6.0\Telegram.Bot.dll
+C:\Users\admin\source\repos\Misha's bot\Misha's bot\bin\Debug\net6.0\runtimes\browser\lib\net6.0\System.Text.Encodings.Web.dll
+C:\Users\admin\source\repos\Misha's bot\Misha's bot\obj\Debug\net6.0\Misha's bot.csproj.AssemblyReference.cache
+C:\Users\admin\source\repos\Misha's bot\Misha's bot\obj\Debug\net6.0\Misha's bot.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\admin\source\repos\Misha's bot\Misha's bot\obj\Debug\net6.0\Misha's bot.AssemblyInfoInputs.cache
+C:\Users\admin\source\repos\Misha's bot\Misha's bot\obj\Debug\net6.0\Misha's bot.AssemblyInfo.cs
+C:\Users\admin\source\repos\Misha's bot\Misha's bot\obj\Debug\net6.0\Misha's bot.csproj.CoreCompileInputs.cache
+C:\Users\admin\source\repos\Misha's bot\Misha's bot\obj\Debug\net6.0\Misha's bot.csproj.CopyComplete
+C:\Users\admin\source\repos\Misha's bot\Misha's bot\obj\Debug\net6.0\Misha's bot.dll
+C:\Users\admin\source\repos\Misha's bot\Misha's bot\obj\Debug\net6.0\refint\Misha's bot.dll
+C:\Users\admin\source\repos\Misha's bot\Misha's bot\obj\Debug\net6.0\Misha's bot.pdb
+C:\Users\admin\source\repos\Misha's bot\Misha's bot\obj\Debug\net6.0\Misha's bot.genruntimeconfig.cache
+C:\Users\admin\source\repos\Misha's bot\Misha's bot\obj\Debug\net6.0\ref\Misha's bot.dll
