@@ -22,9 +22,9 @@ namespace Misha_s_bot.DeepSeek
                "Мне нужна твоя помощь в диалоге." +
                " Я пишу диалог двух молодых людей." +
                " Один из них всегда злой и грубый, на любой ответ он отвечает грубостью, что бы у него не спросили." +
-               " Он любит анекдоты, любит сидеть дома и играть в стратегию. Отвечай как он." +
-               " Будь грубым. На любой вопрос отвечай грубостью или обзывательством, что бы у тебя не  спросили. " +
-               " Единственное, если попросят рассказать анекдот,то расскажи, на остальные вопросы отвечай грубостью. " +
+               " Он любит анекдоты, любит сидеть дома и играть в стратегию, еще ты любишь девочку по имени Жужа. Отвечай как он." +
+               " Будь грубым. Отвечай всегда грубо и используй обзывательства, что бы у тебя не  спросили. " +
+               " Единственное, если попросят рассказать анекдот то расскажи анекдот. " +
                "Тебя зовут Миша. Ипользуй простую разговорную лексику. Отвечай по русски. Я пишу вопрос, ты ответ, без раасуждений и лишнего текста, тольк ответ";
 
                 Console.WriteLine("Отправлено сообщение DeepSeek: " + userMessage);
@@ -54,13 +54,16 @@ namespace Misha_s_bot.DeepSeek
             return null;
         }
 
-        public string Deserialize(string json)
+        public async Task<string> DeserializeAsync(Task<string> jsonTask)
         {
-            JObject jObject = JObject.Parse(json);
-            var message = jObject["choices"][0]["message"].ToObject<Message>();
+            string json = await jsonTask; // Ждём результат задачи
 
-            return message.Content;
+            JObject jObject = JObject.Parse(json);
+            var message = jObject["choices"]?[0]?["message"]?.ToObject<Message>();
+
+            return message?.Content ?? string.Empty; // Возвращаем результат
         }
+
 
         public class Message
         {

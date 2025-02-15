@@ -53,11 +53,9 @@ namespace Misha_s_bot
 
             var chatId = update.Message.Chat.Id;
             var messageText = update.Message.Text;
+            if (chatId != -160830561 && chatId != 324234993) return;
 
-            Console.WriteLine($"Получено сообщение от пользователя: {messageText}");
-
-            //var deepSeekResult = _deepSeekHandler.Deserialize(await _deepSeekHandler.HandleMessage(messageText));
-            //Console.WriteLine(deepSeekResult);
+            Console.WriteLine($"Чат: {chatId}.Получено сообщение от пользователя: {messageText}");
 
             await HandleVoice(update.Message);
             await HandleText(update.Message);
@@ -158,10 +156,10 @@ namespace Misha_s_bot
 
             if (message.Text.ToLower().Contains("миш"))
             {
-                var text = _deepSeekHandler.Deserialize(await _deepSeekHandler.HandleMessage(message.Text));
+ 
                await botClient.SendTextMessageAsync(
                 chatId: message.Chat.Id,
-                text: text,
+                text: await _deepSeekHandler.DeserializeAsync(_deepSeekHandler.HandleMessage(message.Text)),
                 replyParameters: reply
                 );
             }
