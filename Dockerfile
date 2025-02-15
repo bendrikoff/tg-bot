@@ -15,3 +15,5 @@ COPY --from=build /app/out .
 
 # Задаем команду для запуска приложения
 ENTRYPOINT ["dotnet", "Misha's bot.dll"]
+
+COPY /voices /app/voices

@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "Misha's bot": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "BOT_TOKEN": "1605173603:AAFMscFwp-Cd0uZmuHmYwFEcToB5KyRjGwI"
+      }
+    }
+  }
+}

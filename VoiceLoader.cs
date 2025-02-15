@@ -8,11 +8,12 @@ namespace Misha_s_bot
 {
     internal class VoiceLoader
     {
-        public Dictionary<Voices, string> VoicesPath = new Dictionary<Voices, string>
+        public static Dictionary<Voices, string> VoicesPath = new Dictionary<Voices, string>
         {
-            {Voices.OhYes, "../../../voices/oh_yes.ogg" },
-            {Voices.IgorFuck, "../../../voices/igor_fuck.ogg" },
-            {Voices.KtoLohPoTelkam, "../../../voices/loh.ogg" },
+            {Voices.OhYes, "voices/oh_yes.ogg" },
+            {Voices.IgorFuck, "voices/igorf.ogg" },
+            {Voices.KtoLohPoTelkam, "voices/oh.ogg" },
+            {Voices.Bublik, "voices/bublik.ogg" },
 
         };
 
@@ -22,6 +23,7 @@ namespace Misha_s_bot
     {
         OhYes,
         IgorFuck,
-        KtoLohPoTelkam
+        KtoLohPoTelkam,
+        Bublik,
     }
 }
