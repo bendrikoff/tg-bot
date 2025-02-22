@@ -13,19 +13,31 @@ namespace Misha_s_bot.DeepSeek
         private readonly string apiUrl = "https://openrouter.ai/api/v1/chat/completions";
         private static readonly string apiKey = Environment.GetEnvironmentVariable("DEEP_SEEK_TOKEN"); // Замените на свой API-ключ
 
-        public async Task<string> HandleMessage(string userMessage)
+        public async Task<string> HandleMessage(string userMessage, string userName, string? answeredMessage = default)
         {
             try
             {
                 var startPrompt = 
-                    "Я пишу текст для книги. " +
+               "Я пишу текст для книги. " +
                "Мне нужна твоя помощь в диалоге." +
                " Я пишу диалог двух молодых людей." +
                " Один из них всегда злой и грубый, на любой ответ он отвечает грубостью, что бы у него не спросили." +
                " Он любит анекдоты, любит сидеть дома и играть в стратегию, еще ты любишь девочку по имени Жужа. Отвечай как он." +
                " Будь грубым. Отвечай всегда грубо и используй обзывательства, что бы у тебя не  спросили. " +
                " Единственное, если попросят рассказать анекдот то расскажи анекдот. " +
-               "Тебя зовут Миша. Ипользуй простую разговорную лексику. Отвечай по русски. Я пишу вопрос, ты ответ, без раасуждений и лишнего текста, тольк ответ";
+               " Можешь просто грубо ответить на вопрос. " +
+               " Можешь использовать смайлы. " +
+               "Тебя зовут Миша. Ипользуй простую разговорную лексику. Отвечай по русски. Я пишу вопрос, ты ответ, без расуждений и лишнего текста, только ответ.";
+
+                var userPrompt = string.IsNullOrEmpty(userName)
+                    ? ""
+                    : "Ты разговариваешь с человеком по имени " + userName + ".";
+                var answeredPrompt = string.IsNullOrEmpty(answeredMessage)
+                    ? ""
+                    : "Тебе ответили на твое сообщение текста:/" + answeredMessage + "/.";
+
+                startPrompt += userPrompt + answeredPrompt;
+
 
                 Console.WriteLine("Отправлено сообщение DeepSeek: " + userMessage);
                 using (HttpClient client = new HttpClient())

@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.DataProtection.KeyManagement;
 using Misha_s_bot.DeepSeek;
 using System.Text;
+using System.Threading;
 using Telegram.Bot;
 using Telegram.Bot.Exceptions;
 using Telegram.Bot.Polling;
@@ -121,25 +122,8 @@ namespace Misha_s_bot
             {
                 await SendVoiceFile(Voices.Bublik, message.Chat.Id);
             }
-
-
-            if (message.Text == "/info@kto_takoy_misha_bot")
-            {
-                if (message.From.Id == Users.Igor)
-                {
-                    await SendVoiceFile(Voices.IgorFuck, message.Chat.Id);
-                }
-            }
-
-            if (message.Text == "/info@kto_takoy_misha_bot")
-            {
-                if (message.From.Id == Users.Kirill)
-                {
-                    await SendVoiceFile(Voices.KtoLohPoTelkam, message.Chat.Id);
-                }
-            }
-
         }
+
         static async Task HandleText(Message message)
         {
             var reply = new ReplyParameters();
@@ -156,11 +140,19 @@ namespace Misha_s_bot
 
             if (message.Text.ToLower().Contains("миш"))
             {
- 
-               await botClient.SendTextMessageAsync(
-                chatId: message.Chat.Id,
-                text: await _deepSeekHandler.DeserializeAsync(_deepSeekHandler.HandleMessage(message.Text)),
-                replyParameters: reply
+                await botClient.SendTextMessageAsync(
+                 chatId: message.Chat.Id,
+                 text: await _deepSeekHandler.DeserializeAsync(_deepSeekHandler.HandleMessage(message.Text, Users.Names[message.From.Id])),
+                 replyParameters: reply
+                 );
+            }
+
+            if (message.ReplyToMessage != null && message.ReplyToMessage.From.Id == (await botClient.GetMeAsync()).Id)
+            {
+                await botClient.SendTextMessageAsync(
+                    chatId: message.Chat.Id,
+                    text: await _deepSeekHandler.DeserializeAsync(_deepSeekHandler.HandleMessage(message.Text, Users.Names[message.From.Id], message.ReplyToMessage.Text)),
+                    replyParameters: reply
                 );
             }
         }
